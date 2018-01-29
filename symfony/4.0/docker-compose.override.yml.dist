@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./config/docker/nginx-proxy/certs:/etc/nginx/certs:ro
+
+  mysql:
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+
+  phpmyadmin:
+    environment:
+      - VIRTUAL_HOST=phpmyadmin.symfony.dev
+
+  web:
+    build:
+      context: .
+      dockerfile: config/docker/web/dev/Dockerfile
+    volumes:
+      - .:/usr/share/nginx:cached
+      - ./config/docker/web/dev/php.conf:/usr/local/etc/php-fpm.d/zz-log.conf
+      - ./config/docker/web/.bash_history:/root/.bash_history
+
+  nginx:
+    image: nginx:1.13
+    volumes:
+      - .:/usr/share/nginx:cached
+      - ./config/docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    environment:
+      - VIRTUAL_HOST=*.symfony.dev
