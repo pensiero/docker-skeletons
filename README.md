@@ -1,11 +1,13 @@
 Docker Skeletons
 ================
 
+> **WORK IN PROGRESS**: take a look at the [roadmap](https://github.com/pensiero/docker-skeletons/issues/2).
+
 Init with a single line of code your favourite framework thanks to **Docker**.
 
 Every skeleton has an independent Docker configuration, with multiple `Dockerfile` and `docker-compose.yml` files.
 
-Read more about Docker and the amazin docker-compose in the [official docs](https://docs.docker.com/get-started/). 
+Read more about Docker and the amazing docker-compose in the [official docs](https://docs.docker.com/get-started/). 
 
 
 # Setup
