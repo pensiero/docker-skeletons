@@ -43,6 +43,12 @@ Go to phpmyadmin.symfony.dev, user `root`, password `secret`.
 
 Every container configs is stored in the `config/` folder.
 
+- `nginx-proxy` act as a reverse proxy in order to map the domain `www.symfony.dev` over the container `nginx`
+- `nginx` is the web server
+- `web` contains the php application, *dev* and *prod* environments are separated
+- `mysql` contains the database
+- `phpmyadmin` is a web gui for people who wants to quickly wander through the database
+
 # Info
 
 ### Database credentials
@@ -50,6 +56,16 @@ Every container configs is stored in the `config/` folder.
 - Host: `mysql` (name of the container in the `docker-compose.yml` file)
 - User: `root`
 - Password: `secret`
+
+### Env variables
+
+All the variables are stored into the `.env` file, a not versioned copy of the `.env.dist`.
+If you change one of them, remember to restart the web container.
+
+Easy way (but not the best):
+```
+docker-compose down && docker-compose up -d
+```
 
 ### Helpful docker-compose commands
 

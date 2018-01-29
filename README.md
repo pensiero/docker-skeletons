@@ -40,3 +40,10 @@ So when you will face the "Unauthorized screen", simply type:
 ```
 badidea
 ```
+
+### Production-ready
+
+Every skeleton ships with a `docker-compose.override.yml.dist` file. Why? Because your local environment could
+(and usually is) different from the production environment.
+
+During the setup phase, the `docker-compose.override.yml.dist` file is copied into a not versioned `docker-compose.override.yml` file (along with other files).
